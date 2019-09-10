@@ -5,6 +5,20 @@ export const initialState =
     id: 3892987589
   }
   
-  export const titleReducer =() => {
-    
-  }
+    export const titleReducer = (state, action) => {
+      switch (action.type) {
+        case "TOGGLE_EDITING":
+          return {
+            ...state,
+            editing: !state.editing
+          };
+        case "UPDATE_TITLE":
+          return {
+            ...state,
+            editing: !state.editing,
+            title: action.payload
+          };
+        default:
+          return state;
+      }
+    };
